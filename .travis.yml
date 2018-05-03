@@ -1,0 +1,14 @@
+language: java
+
+addons:
+  sonarcloud:
+    organization: "dnascto-github"
+
+script:
+  - mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar
+  
+services:
+  - mysql
+  
+before_install:
+   - mysql -e 'CREATE DATABASE IF NOT EXISTS test;'
