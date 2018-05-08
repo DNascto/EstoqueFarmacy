@@ -22,8 +22,8 @@ public class ControleFornecedoresTest {
     
     @Before
     public void setUp() {
-        forn = new ControleFornecedor();
         forneDaoMock = mock(FornecedorDAO.class);
+        forn = new ControleFornecedor(forneDaoMock);
     }
 
     // TODO add test methods here.

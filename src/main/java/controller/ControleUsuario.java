@@ -14,6 +14,10 @@ public class ControleUsuario {
 
     public ControleUsuario() {
     }
+    
+    public ControleUsuario(UsuarioDAO dao) {
+        this.dao = dao;
+    }
 
     public boolean logar(String log, String sen) {
         try {
@@ -33,7 +37,7 @@ public class ControleUsuario {
     }
 
     public boolean cadastrarUsuario(String nome, String telefone, String login,
-            String senha, String endereco) {
+                                    String senha, String endereco) {
         try {
             Usuarios user = new Usuarios(nome, telefone, login, senha, endereco);
 

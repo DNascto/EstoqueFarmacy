@@ -12,6 +12,11 @@ public class ControleFornecedor {
     FornecedorDAO dao = new FornecedorDAO();
     
     public ControleFornecedor(){
+        
+    }
+   
+    public ControleFornecedor(FornecedorDAO dao){
+        this.dao = dao;
     }
     
     public void cadastrarFornecedor(String nome, String telefone, String endereco, String cnpj){

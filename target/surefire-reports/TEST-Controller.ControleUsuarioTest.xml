@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="8" failures="0" name="Controller.ControleUsuarioTest" time="0.078" errors="0" skipped="2">
+<testsuite tests="3" failures="0" name="Controller.ControleUsuarioTest" time="0.609" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk1.8.0_144\jre\bin"/>
@@ -14,6 +14,7 @@
     <property name="user.country" value="BR"/>
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="sun.os.patch.level" value="Service Pack 1"/>
+    <property name="test" value="Controller.ControleUsuarioTest"/>
     <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
     <property name="user.dir" value="C:\Users\White\Documents\NetBeansProjects\EstoqueFarmacy"/>
     <property name="java.runtime.version" value="1.8.0_144-b01"/>
@@ -44,7 +45,7 @@
     <property name="java.vm.specification.version" value="1.8"/>
     <property name="sun.arch.data.model" value="64"/>
     <property name="java.home" value="C:\Program Files\Java\jdk1.8.0_144\jre"/>
-    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher -Dmaven.ext.class.path=C:\Program Files\NetBeans 8.2\java\maven-nblib\netbeans-eventspy.jar -Dfile.encoding=UTF-8 install"/>
+    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher -Dtest=Controller.ControleUsuarioTest -Dmaven.ext.class.path=C:\Program Files\NetBeans 8.2\java\maven-nblib\netbeans-eventspy.jar -Dfile.encoding=UTF-8 surefire:test"/>
     <property name="java.specification.vendor" value="Oracle Corporation"/>
     <property name="user.language" value="pt"/>
     <property name="awt.toolkit" value="sun.awt.windows.WToolkit"/>
@@ -61,16 +62,7 @@
     <property name="sun.desktop" value="windows"/>
     <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
-  <testcase classname="Controller.ControleUsuarioTest" name="testDeletarUsuario" time="0"/>
-  <testcase classname="Controller.ControleUsuarioTest" name="testListarUsuarios_LancaException" time="0">
-    <skipped/>
-  </testcase>
-  <testcase classname="Controller.ControleUsuarioTest" name="testLogarValido" time="0"/>
-  <testcase classname="Controller.ControleUsuarioTest" name="testCadastrarUsuarioInvalido" time="0"/>
-  <testcase classname="Controller.ControleUsuarioTest" name="testLogarInvalido" time="0"/>
-  <testcase classname="Controller.ControleUsuarioTest" name="testCadastrarUsuario" time="0.062"/>
-  <testcase classname="Controller.ControleUsuarioTest" name="testDeletarUsuario_LancaException" time="0.062">
-    <skipped/>
-  </testcase>
-  <testcase classname="Controller.ControleUsuarioTest" name="testListarUsuarios" time="0.016"/>
+  <testcase classname="Controller.ControleUsuarioTest" name="testLogarValido" time="0.515"/>
+  <testcase classname="Controller.ControleUsuarioTest" name="testLogarInvalido" time="0.016"/>
+  <testcase classname="Controller.ControleUsuarioTest" name="testCadastrarUsuario" time="0"/>
 </testsuite>
