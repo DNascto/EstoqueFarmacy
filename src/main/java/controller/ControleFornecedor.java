@@ -21,11 +21,7 @@ public class ControleFornecedor {
     
     public void cadastrarFornecedor(String nome, String telefone, String endereco, String cnpj){
         try {
-            Fornecedores forn = new Fornecedores();
-            forn.setNome(nome);
-            forn.setFone(telefone);
-            forn.setEndereco(endereco);
-            forn.setCnpj(cnpj);
+            Fornecedores forn = new Fornecedores(nome, nome, endereco, cnpj);
             dao.cadastrarFornecedor(forn);
         } catch (Exception e) {
             System.err.println("\n============================================");

@@ -9,6 +9,16 @@ public class Fornecedores {
     String fone;
     String endereco;
     String cnpj;
+
+    public Fornecedores() {
+    }
+
+    public Fornecedores(String nome, String fone, String endereco, String cnpj) {
+        this.nome = nome;
+        this.fone = fone;
+        this.endereco = endereco;
+        this.cnpj = cnpj;
+    }
     
     public String getNome() {
         return nome;
