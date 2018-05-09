@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
-import org.junit.Ignore;
 import static org.mockito.Mockito.*;
 
 /**
@@ -27,9 +26,6 @@ public class ControleFornecedoresTest {
         forn = new ControleFornecedor(forneDaoMock);
     }
 
-    // TODO add test methods here.
-    // The methods must be annotated with annotation @Test. For example:
-    //
     @Test
     public void testCadastrarFornecedor() {
         String nome = "Eu";
@@ -37,17 +33,6 @@ public class ControleFornecedoresTest {
         String endereco = "Alberto Carazzai";
         String cnpj = "789456123654/1000";
         
-        forn.cadastrarFornecedor(nome, telefone, endereco, cnpj);
-    }
-    
-    @Ignore
-    @Test (expected = Exception.class)
-    public void testCadastrarFornecedor_LancaException() {
-        String nome = null;
-        String telefone = null;
-        String endereco = null;
-        String cnpj = null;
-                       
         forn.cadastrarFornecedor(nome, telefone, endereco, cnpj);
     }
     
@@ -63,17 +48,5 @@ public class ControleFornecedoresTest {
         
         assertNotNull(listaForne);
         assertTrue(listaForne.size() == 10);
-    }
-    
-    @Test
-    public void testListarFornecedores_LancaException() {
-        ArrayList<Fornecedores> listaForn = new ArrayList<>();
-        
-        when(forneDaoMock.listarFornecedores())
-                .thenReturn(listaForn);
-        
-        ArrayList<Fornecedores> listaForne = forn.listarFornecedores();
-        
-        //assertNull(listaForne);
-    }
+    }    
 }

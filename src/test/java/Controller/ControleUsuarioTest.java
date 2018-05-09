@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
-import org.junit.Ignore;
 import static org.mockito.Mockito.*;
 
 /**
@@ -30,9 +29,6 @@ public class ControleUsuarioTest {
         controleUsu = new ControleUsuario(usuarioDaoMock);
     }
 
-    // TODO add test methods here.
-    // The methods must be annotated with annotation @Test. For example:
-    //
     @Test
     public void testLogarValido() {
         Usuarios usu = new Usuarios();
@@ -68,18 +64,21 @@ public class ControleUsuarioTest {
         boolean cadastro = controleUsu.cadastrarUsuario(nome, telefone, login, senha, endereco);
         assertTrue(cadastro);
     }
-    /*
+   
     @Test (expected = Exception.class)
-    public void testCadastrarUsuarioInvalido() { //possibilidade de nao funcionar
+    public void testCadastrarUsuarioInvalido() { 
         String nome = null,
                 telefone = null,
                 login = null,
                 senha = null,
                 endereco = null;
 
+        when(usuarioDaoMock.cadastrarUsuario(any()))
+                .then(null);
+        
         controleUsu.cadastrarUsuario(nome, telefone, login, senha, endereco);        
     }
-    
+     
     @Test
     public void testListarUsuarios() {
         ArrayList<Usuarios> listaUsu = new ArrayList<>();
@@ -91,28 +90,22 @@ public class ControleUsuarioTest {
                 .thenReturn(listaUsu);
         
         ArrayList<Usuarios> list = controleUsu.listarUsuarios();
-        assertTrue(list != null);
-        //assertTrue(list.size() == 10);
+        assertNotNull(list);
+        assertTrue(list.size() == 10);
     }
     
-    @Ignore
     @Test (expected = Exception.class)
     public void testListarUsuarios_LancaException() { 
         ControleUsuario controlUsu = new ControleUsuario();
+        
+        when(usuarioDaoMock.listarUsuarios())
+                .then(null);
+        
         controlUsu.listarUsuarios();
     }
         
     @Test
     public void testDeletarUsuario() { 
-        ControleUsuario controlUsu = new ControleUsuario();
-        controlUsu.deletarUsuario("teste");
+        controleUsu.deletarUsuario("Joselito");
     }
-    
-    @Ignore
-    @Test (expected = Exception.class)
-    public void testDeletarUsuario_LancaException() { 
-        ControleUsuario controlUsu = new ControleUsuario();
-        controlUsu.deletarUsuario("$###@@");
-    }
-    */
 }
