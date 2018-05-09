@@ -5,19 +5,17 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
-import javax.swing.JOptionPane;
 
 /**
  *
  * @author gabri
  */
 public class FornecedorDAO {
-    private final Connection connection;
-    Fornecedores forn = new Fornecedores();
+    private final Connection connection = null;
     
-    public FornecedorDAO(){
-        this.connection = ModuloConexao.Conector();
-    }
+//    public FornecedorDAO(){
+//        this.connection = ModuloConexao.Conector();
+//    }
     
     public void cadastrarFornecedor(Fornecedores forn){
         String sql = "INSERT INTO tbFornecedor (nome, fone, endereco, cnpj) "

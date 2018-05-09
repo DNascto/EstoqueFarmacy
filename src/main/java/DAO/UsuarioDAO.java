@@ -12,12 +12,11 @@ import java.util.ArrayList;
  */
 public class UsuarioDAO {
 
-    private final Connection connection;
+    private final Connection connection = null;
 
-    public UsuarioDAO() {
-        this.connection = new ModuloConexao().Conector();
-
-    }
+//    public UsuarioDAO() {
+//        this.connection = new ModuloConexao().Conector();
+//    }
 
     public boolean logar(Usuarios usu) {
         String sql = "SELECT * FROM tbusuario WHERE login = ? and senha = ?";

@@ -14,11 +14,11 @@ import javax.swing.JOptionPane;
  */
 public class EstoqueDAO {
 
-    private final Connection connection;
+    private final Connection connection = null;
     
-    public EstoqueDAO(){
-        this.connection = new ModuloConexao().Conector();
-    }
+//    public EstoqueDAO(){
+//        this.connection = new ModuloConexao().Conector();
+//    }
     
     public void entradaProduto(Produtos produto){
         String sql = "INSERT INTO tbEstoque (quantidade, id_Produto) VALUES (?,?);";
