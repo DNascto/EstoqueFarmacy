@@ -13,14 +13,14 @@ import javax.swing.JOptionPane;
  */
 public class ProdutoDAO {
 
-    private final Connection connection = null;
+    private Connection connection = null;
 
-//    public ProdutoDAO(){
-//        this.connection = new ModuloConexao().Conector();
-//    }
+    public ProdutoDAO(){
+        this.connection = ModuloConexao.Conector();
+   }
     
     public void inserir(Produtos produto) {
-        String sql = "insert into tbProduto (nome, descricao, codBarras, categoria) values (?,?,?,?);";
+        String sql = "insert into tbProduto (nome, descricao, codBarras, categoria) values (?,?,?,?)";
 
         try {
             PreparedStatement stmt = this.connection.prepareStatement(sql);
@@ -45,7 +45,7 @@ public class ProdutoDAO {
     }
 
     public ArrayList<Produtos> buscarProduto() {
-        String sql = "select * from tbProduto;";
+        String sql = "select * from tbProduto";
         try {
             ArrayList<Produtos> vetProd = new ArrayList<>();
             PreparedStatement pst = this.connection.prepareStatement(sql);

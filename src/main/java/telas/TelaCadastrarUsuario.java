@@ -11,9 +11,20 @@ import javax.swing.JOptionPane;
 public class TelaCadastrarUsuario extends javax.swing.JFrame {
 
     Usuarios user = new Usuarios();
-    
+
     public TelaCadastrarUsuario() {
         initComponents();
+        this.setName("telaCadastro");
+        jbCadastrar.setName("btnCadastrar");
+        jbCancelar.setName("btnCancelar");
+        jtfEndereco.setName("txtEndereco");
+        jtfFone.setName("txtTelefone");
+        jtfLogin.setName("txtLogin");
+        jtfNome.setName("txtNome");
+        jtfSenha.setName("txtSenha");
+        jlMsgSucesso.setName("msgSucesso");
+        
+        jlMsgSucesso.setVisible(false);
     }
 
     /**
@@ -38,6 +49,7 @@ public class TelaCadastrarUsuario extends javax.swing.JFrame {
         jtfEndereco = new javax.swing.JTextField();
         jtfLogin = new javax.swing.JTextField();
         jtfSenha = new javax.swing.JPasswordField();
+        jlMsgSucesso = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
@@ -69,6 +81,9 @@ public class TelaCadastrarUsuario extends javax.swing.JFrame {
             }
         });
 
+        jlMsgSucesso.setForeground(new java.awt.Color(255, 0, 0));
+        jlMsgSucesso.setText("Usuário cadastrado com sucesso");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -86,26 +101,25 @@ public class TelaCadastrarUsuario extends javax.swing.JFrame {
                             .addComponent(jLabel4)
                             .addComponent(jLabel5)
                             .addComponent(jLabel3))
+                        .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jtfEndereco)
+                            .addComponent(jtfLogin)
+                            .addComponent(jtfFone, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jtfSenha, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jtfFone)
-                                    .addComponent(jtfEndereco)
-                                    .addComponent(jtfLogin)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(5, 5, 5)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jtfSenha, javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(jbCadastrar)
-                                                .addGap(57, 57, 57)
-                                                .addComponent(jbCancelar))
-                                            .addComponent(jtfNome))
-                                        .addGap(0, 0, Short.MAX_VALUE)))))))
-                .addGap(55, 55, 55))
+                                        .addComponent(jbCadastrar)
+                                        .addGap(57, 57, 57)
+                                        .addComponent(jbCancelar))
+                                    .addComponent(jtfNome))
+                                .addGap(0, 0, Short.MAX_VALUE)))))
+                .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jlMsgSucesso)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -132,11 +146,13 @@ public class TelaCadastrarUsuario extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(jtfSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jlMsgSucesso)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jbCadastrar)
                     .addComponent(jbCancelar))
-                .addContainerGap(29, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         pack();
@@ -144,22 +160,27 @@ public class TelaCadastrarUsuario extends javax.swing.JFrame {
 
     private void jbCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCadastrarActionPerformed
         String nome = jtfNome.getText();
-        String  telefone= jtfFone.getText();
+        String telefone = jtfFone.getText();
         String endereco = jtfEndereco.getText();
         String login = jtfLogin.getText();
         String senha = jtfSenha.getText();
-        
+
         boolean cad = false;
-        
-        if(nome.equals("") && senha.equals(""))
+
+        if (nome.equals("") && senha.equals("")) {
             JOptionPane.showMessageDialog(null, "Informe um usuario e senha.");
-        else            
+        } else {
             cad = new ControleUsuario().cadastrarUsuario(nome, telefone, login, senha, endereco);
-        
-        if(cad){
-            JOptionPane.showMessageDialog(null, "Usuário cadastrado com sucesso!");
-            dispose();
         }
+
+        if (cad) {
+            jlMsgSucesso.setVisible(true);
+            //JOptionPane.showMessageDialog(null, "Usuário cadastrado com sucesso!");
+            //dispose();
+        }else{
+            jlMsgSucesso.setVisible(true);            
+        }
+            
     }//GEN-LAST:event_jbCadastrarActionPerformed
 
     private void jbCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCancelarActionPerformed
@@ -210,6 +231,7 @@ public class TelaCadastrarUsuario extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JButton jbCadastrar;
     private javax.swing.JButton jbCancelar;
+    private javax.swing.JLabel jlMsgSucesso;
     private javax.swing.JTextField jtfEndereco;
     private javax.swing.JTextField jtfFone;
     private javax.swing.JTextField jtfLogin;

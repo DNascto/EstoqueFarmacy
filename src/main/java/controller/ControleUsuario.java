@@ -19,15 +19,20 @@ public class ControleUsuario {
         this.dao = dao;
     }
 
-    public boolean logar(String log, String sen) {
+    public boolean logar(String log, String senha) {
         Usuarios usu = new Usuarios();
-        usu.setLogin(log);
-        usu.setSenha(sen);
-        return dao.logar(usu);
+        if (log.trim() != null && !log.trim().equals("")
+                || senha.trim() != null && !senha.trim().equals("")) {
+            usu.setLogin(log);
+            usu.setSenha(senha);
+            return dao.logar(usu);
+        } else {
+            return false;
+        }
     }
 
     public boolean cadastrarUsuario(String nome, String telefone, String login,
-                                    String senha, String endereco) {
+            String senha, String endereco) {
         Usuarios user = new Usuarios(nome, telefone, login, senha, endereco);
 
         return dao.cadastrarUsuario(user);

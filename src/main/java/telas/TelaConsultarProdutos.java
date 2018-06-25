@@ -15,9 +15,15 @@ public class TelaConsultarProdutos extends javax.swing.JFrame {
      * Creates new form TelaConsultarProdutos
      */
     public TelaConsultarProdutos() {
-        initComponents();
-        DefaultTableModel modelo = (DefaultTableModel)jtFornecedor.getModel();
-        jtFornecedor.setRowSorter(new TableRowSorter(modelo));
+        initComponents();        
+        this.setLocationRelativeTo(null);
+        DefaultTableModel modelo = (DefaultTableModel)jtProdutos.getModel();
+        jtProdutos.setRowSorter(new TableRowSorter(modelo));
+        
+        this.setName("telaConsultaProdutos");
+        jtProdutos.setName("tabelaProdutos");
+        jbConsultar.setName("btnConsultarProdutos");
+        jtProdutos.setName("tabelaProdutos");
     }
 
     /**
@@ -31,7 +37,7 @@ public class TelaConsultarProdutos extends javax.swing.JFrame {
 
         jLabel2 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jtFornecedor = new javax.swing.JTable();
+        jtProdutos = new javax.swing.JTable();
         jbConsultar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -41,7 +47,7 @@ public class TelaConsultarProdutos extends javax.swing.JFrame {
         jLabel2.setText("Consulta de ProdutosCadastrados");
         jLabel2.setAlignmentY(0.0F);
 
-        jtFornecedor.setModel(new javax.swing.table.DefaultTableModel(
+        jtProdutos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -49,7 +55,7 @@ public class TelaConsultarProdutos extends javax.swing.JFrame {
                 "Nome", "Descrição", "Código Barras", "Categoria"
             }
         ));
-        jScrollPane1.setViewportView(jtFornecedor);
+        jScrollPane1.setViewportView(jtProdutos);
 
         jbConsultar.setText("Consultar");
         jbConsultar.addActionListener(new java.awt.event.ActionListener() {
@@ -94,7 +100,7 @@ public class TelaConsultarProdutos extends javax.swing.JFrame {
 
     private void jbConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbConsultarActionPerformed
         
-        DefaultTableModel modelo = (DefaultTableModel)jtFornecedor.getModel();
+        DefaultTableModel modelo = (DefaultTableModel)jtProdutos.getModel();
         modelo.setNumRows(0);
         ProdutoDAO controlProd = new ProdutoDAO();
 
@@ -150,6 +156,6 @@ public class TelaConsultarProdutos extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton jbConsultar;
-    private javax.swing.JTable jtFornecedor;
+    private javax.swing.JTable jtProdutos;
     // End of variables declaration//GEN-END:variables
 }

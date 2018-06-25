@@ -11,11 +11,11 @@ import java.util.ArrayList;
  * @author gabri
  */
 public class FornecedorDAO {
-    private final Connection connection = null;
+    private Connection connection = null;
     
-//    public FornecedorDAO(){
-//        this.connection = ModuloConexao.Conector();
-//    }
+    public FornecedorDAO(){
+        this.connection = ModuloConexao.Conector();
+    }
     
     public void cadastrarFornecedor(Fornecedores forn){
         String sql = "INSERT INTO tbFornecedor (nome, fone, endereco, cnpj) "

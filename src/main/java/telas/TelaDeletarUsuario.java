@@ -15,6 +15,10 @@ public class TelaDeletarUsuario extends javax.swing.JFrame {
     public TelaDeletarUsuario() {
         initComponents();
         populaJComboBox();
+        this.setLocationRelativeTo(null);
+        this.setName("telaDeletarUsuario");
+        comboUsuarioNome.setName("cbNomeUsuario");
+        jbDeletar.setName("btnDeletar");
     }
 
     /**
@@ -77,6 +81,7 @@ public class TelaDeletarUsuario extends javax.swing.JFrame {
     private void jbDeletarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbDeletarActionPerformed
         new ControleUsuario().deletarUsuario(
                         comboUsuarioNome.getSelectedItem().toString());
+        populaJComboBox();
     }//GEN-LAST:event_jbDeletarActionPerformed
 
     /**
@@ -115,6 +120,7 @@ public class TelaDeletarUsuario extends javax.swing.JFrame {
     }
 
     public void populaJComboBox(){
+        comboUsuarioNome.removeAllItems();
         ControleUsuario controlUsuario = new ControleUsuario();
         
         for(Usuarios u : controlUsuario.listarUsuarios()){

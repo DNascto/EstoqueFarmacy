@@ -12,30 +12,27 @@ import java.util.ArrayList;
  */
 public class UsuarioDAO {
 
-    private final Connection connection = null;
+    private Connection connection = null;
 
-//    public UsuarioDAO() {
-//        this.connection = new ModuloConexao().Conector();
-//    }
-
+    public UsuarioDAO() {
+        this.connection = ModuloConexao.Conector();
+    }
     public boolean logar(Usuarios usu) {
         String sql = "SELECT * FROM tbusuario WHERE login = ? and senha = ?";
 
         try {
             PreparedStatement pst = this.connection.prepareStatement(sql);
 
-            System.out.println("DAO: "+usu.getLogin());
             pst.setString(1, usu.getLogin());
             pst.setString(2, usu.getSenha());
             ResultSet rs = pst.executeQuery();
-            
-            if (rs.next()) {
+
+            while (rs.next()) {
                 //String nome = rs.getString("nome");
-                System.out.println("IF ok");
                 return true;
-            } else {
-                return false;
             }
+            return false;
+
         } catch (Exception e) {
             System.err.println("\n============================================");
             System.err.println("\nCLASSE ControleUsuario DAO");
@@ -93,9 +90,9 @@ public class UsuarioDAO {
             }
             rs.close();
             pst.close();
-            
+
             return vetUsuario;
-            
+
         } catch (Exception e) {
             System.err.println("\n============================================");
             System.err.println("\nCLASSE ControleUsuario - DAO");
@@ -106,8 +103,8 @@ public class UsuarioDAO {
             throw new RuntimeException(e);
         }
     }
-    
-    public void deletarUsuario(String nome){
+
+    public void deletarUsuario(String nome) {
         String sql = "DELETE FROM tbusuario WHERE nome = ?";
         try {
             PreparedStatement pst = this.connection.prepareStatement(sql);
@@ -121,7 +118,7 @@ public class UsuarioDAO {
             System.err.println("\n " + e.getCause());
             System.err.println("\n " + e.getMessage());
             System.err.println("\n============================================");
-            throw new RuntimeException(e);            
+            throw new RuntimeException(e);
         }
     }
 }

@@ -12,6 +12,12 @@ public class TelaLogin extends javax.swing.JFrame {
 
     public TelaLogin() {
         initComponents();
+        this.setLocationRelativeTo(null);
+        txtUsuario.setName("txtUsuario");
+        txtSenha.setName("txtSenha");
+        btnLogin.setName("btnLogin");
+        btnRegistrar.setName("btnRegistrar");
+        
     }
 
     /**
@@ -30,7 +36,7 @@ public class TelaLogin extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         txtSenha = new javax.swing.JPasswordField();
         btnLogin = new javax.swing.JButton();
-        jbRegistrar = new javax.swing.JButton();
+        btnRegistrar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Estoque Farmacia - Login");
@@ -51,10 +57,10 @@ public class TelaLogin extends javax.swing.JFrame {
             }
         });
 
-        jbRegistrar.setText("Registrar");
-        jbRegistrar.addActionListener(new java.awt.event.ActionListener() {
+        btnRegistrar.setText("Registrar");
+        btnRegistrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbRegistrarActionPerformed(evt);
+                btnRegistrarActionPerformed(evt);
             }
         });
 
@@ -82,7 +88,7 @@ public class TelaLogin extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnLogin)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jbRegistrar))
+                .addComponent(btnRegistrar))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -101,7 +107,7 @@ public class TelaLogin extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jbRegistrar)
+                    .addComponent(btnRegistrar)
                     .addComponent(btnLogin))
                 .addContainerGap())
         );
@@ -126,7 +132,8 @@ public class TelaLogin extends javax.swing.JFrame {
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
         String log = txtUsuario.getText();
-        String sen = txtSenha.getText();
+        String sen = String.valueOf(txtSenha.getText());
+        System.out.println("Log: "+log+"\tSenha: "+sen);
         boolean login = new ControleUsuario().logar(log, sen);
         if (login) {
             TelaPrincipal principal = new TelaPrincipal(log);
@@ -135,14 +142,15 @@ public class TelaLogin extends javax.swing.JFrame {
         } else {
             txtUsuario.setText("");
             txtSenha.setText("");
-            JOptionPane.showMessageDialog(null, "Usuario e/ou senha inválido");
+            JOptionPane.showMessageDialog(null, "Usuario e/ou senha inválido", "MyMessage", JOptionPane.ERROR_MESSAGE);
+            txtUsuario.requestFocus();
         }
     }//GEN-LAST:event_btnLoginActionPerformed
 
-    private void jbRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbRegistrarActionPerformed
+    private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
         TelaCadastrarUsuario tela = new TelaCadastrarUsuario();
         tela.setVisible(true);
-    }//GEN-LAST:event_jbRegistrarActionPerformed
+    }//GEN-LAST:event_btnRegistrarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -199,11 +207,11 @@ public class TelaLogin extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnLogin;
+    private javax.swing.JButton btnRegistrar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JButton jbRegistrar;
     private javax.swing.JPasswordField txtSenha;
     private javax.swing.JTextField txtUsuario;
     // End of variables declaration//GEN-END:variables
